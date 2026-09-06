@@ -1,0 +1,57 @@
+generator client {
+  provider   = "prisma-client-js"
+  engineType = "binary"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// fleetStatus values: "ACTIVE_FLEET" | "PARKED"
+model Listing {
+  id                 String   @id @default(cuid())
+  title              String
+  price              Float
+  description        String
+  city               String
+  county             String
+  zipCode            String
+  latitude           Float
+  longitude          Float
+  mileage            Int?
+  isAdaAccessible    Boolean  @default(false)
+  hasSeatBelts       Boolean  @default(false)
+  hasTVs             Boolean  @default(false)
+  hasPASystem        Boolean  @default(false)
+  hasWorkingRadio    Boolean  @default(false)
+  hasBluetooth       Boolean  @default(false)
+  hasUSBPorts        Boolean  @default(false)
+  hasWorkingBathroom Boolean  @default(false)
+  isOperable         Boolean  @default(true)
+  fleetStatus        String   @default("PARKED")
+  isMigrated         Boolean  @default(false)
+  createdAt          DateTime @default(now())
+
+  photos   Photo[]
+  messages ContactMessage[]
+}
+
+model Photo {
+  id        String  @id @default(cuid())
+  url       String
+  order     Int     @default(0)
+  listing   Listing @relation(fields: [listingId], references: [id], onDelete: Cascade)
+  listingId String
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  message   String
+  createdAt DateTime @default(now())
+
+  listing   Listing @relation(fields: [listingId], references: [id], onDelete: Cascade)
+  listingId String
+}
