@@ -3,7 +3,7 @@ import { getListings } from "@/lib/listings";
 import ListingCard from "@/components/ListingCard";
 
 export const metadata: Metadata = {
-  title: "Affordable Charter Buses for Sale | Vehículos Para La Venta",
+  title: "Affordable Charter Buses for Sale | BusBuy",
   description:
     "Shopping on a budget? Browse the most affordable charter buses and shuttle buses for sale in Orlando, Florida, sorted by price.",
 };

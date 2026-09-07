@@ -4,7 +4,7 @@ import { getListings } from "@/lib/listings";
 import ListingCard from "@/components/ListingCard";
 
 export const metadata: Metadata = {
-  title: "I Need a Bus | Vehículos Para La Venta",
+  title: "I Need a Bus | BusBuy",
   description:
     "Need a bus fast? See what's currently available in Orlando, Florida - from active-fleet coaches ready to drive off the lot to parked units priced to move.",
 };

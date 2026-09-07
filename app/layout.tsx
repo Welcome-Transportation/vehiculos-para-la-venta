@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://vehiculos-para-la-venta.netlify.app"),
   title: {
-    default: "Vehículos Para La Venta | Buses y Charter Buses en Venta",
-    template: "%s | Vehículos Para La Venta",
+    default: "BusBuy | Buses y Charter Buses en Venta",
+    template: "%s | BusBuy",
   },
   description:
     "Marketplace de buses y charter buses en venta en Orlando, Florida. Encuentra vehículos de transporte comercial accesibles, con baño, Wi-Fi y más.",

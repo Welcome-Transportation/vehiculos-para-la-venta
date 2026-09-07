@@ -3,7 +3,7 @@ import { getListings } from "@/lib/listings";
 import ListingCard from "@/components/ListingCard";
 
 export const metadata: Metadata = {
-  title: "Accessible Charter Buses in Orlando, FL | Vehículos Para La Venta",
+  title: "Accessible Charter Buses in Orlando, FL | BusBuy",
   description:
     "ADA-accessible charter buses and shuttle buses for sale in Orlando, Florida, with wheelchair lifts and accessible seating for paratransit and senior transportation fleets.",
 };

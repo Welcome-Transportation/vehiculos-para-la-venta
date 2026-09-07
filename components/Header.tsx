@@ -8,13 +8,13 @@ export default function Header() {
         <Link href="/" className="flex items-center gap-3">
           <Image
             src="/logo-bus.png"
-            alt="Vehículos Para La Venta"
+            alt="BusBuy"
             width={40}
             height={40}
             className="rounded-full object-cover ring-2 ring-red-600"
           />
           <span className="text-lg font-semibold tracking-tight text-black dark:text-zinc-50">
-            Vehículos Para La Venta
+            BusBuy
           </span>
         </Link>
         <nav className="ml-auto flex items-center gap-4 text-sm font-medium text-zinc-600 dark:text-zinc-400">
