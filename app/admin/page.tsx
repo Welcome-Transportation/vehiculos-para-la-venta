@@ -1,4 +1,5 @@
 import { getContactMessages } from "@/lib/admin";
+import { deleteContactMessage } from "./actions";
 
 export const dynamic = "force-dynamic";
 
@@ -47,9 +48,20 @@ export default async function AdminPage() {
                 >
                   {msg.listing.title}
                 </a>
-                <span className="text-xs text-zinc-500">
-                  {dateFormat.format(msg.createdAt)}
-                </span>
+                <div className="flex items-center gap-3">
+                  <span className="text-xs text-zinc-500">
+                    {dateFormat.format(msg.createdAt)}
+                  </span>
+                  <form action={deleteContactMessage}>
+                    <input type="hidden" name="id" value={msg.id} />
+                    <button
+                      type="submit"
+                      className="text-xs font-medium text-zinc-400 hover:text-red-600"
+                    >
+                      Delete
+                    </button>
+                  </form>
+                </div>
               </div>
               <p className="mt-1 text-sm text-zinc-500">
                 Listed at {currency.format(msg.listing.price)}
