@@ -9,7 +9,7 @@ export type SellFormState = {
   message?: string;
 };
 
-async function filesToPhotoUrls(formData: FormData): Promise<string[]> {
+async function collectPhotoUrls(formData: FormData): Promise<string[]> {
   const files = formData
     .getAll("photos")
     .filter((f): f is File => f instanceof File && f.size > 0);
@@ -19,6 +19,17 @@ async function filesToPhotoUrls(formData: FormData): Promise<string[]> {
     const buffer = Buffer.from(await file.arrayBuffer());
     urls.push(`data:${file.type};base64,${buffer.toString("base64")}`);
   }
+
+  const fetchedRaw = String(formData.get("fetchedPhotos") || "");
+  if (fetchedRaw) {
+    try {
+      const fetched = JSON.parse(fetchedRaw) as string[];
+      if (Array.isArray(fetched)) urls.push(...fetched);
+    } catch {
+      // ignore malformed hidden field
+    }
+  }
+
   return urls;
 }
 
@@ -29,6 +40,7 @@ function readListingFields(formData: FormData) {
     description: String(formData.get("description") || "").trim(),
     city: String(formData.get("city") || "").trim(),
     county: String(formData.get("county") || "").trim(),
+    state: String(formData.get("state") || "FL").trim().toUpperCase(),
     zipCode: String(formData.get("zipCode") || "").trim(),
     latitude: Number(formData.get("latitude") || 0),
     longitude: Number(formData.get("longitude") || 0),
@@ -48,6 +60,9 @@ function readListingFields(formData: FormData) {
       formData.get("fleetStatus") === "ACTIVE_FLEET"
         ? "ACTIVE_FLEET"
         : "PARKED",
+    sellerName: String(formData.get("sellerName") || "").trim() || null,
+    sellerPhone: String(formData.get("sellerPhone") || "").trim() || null,
+    sellerCompany: String(formData.get("sellerCompany") || "").trim() || null,
   };
 }
 
@@ -64,7 +79,7 @@ export async function createListing(
     };
   }
 
-  const photoUrls = await filesToPhotoUrls(formData);
+  const photoUrls = await collectPhotoUrls(formData);
 
   const listing = await prisma.listing.create({
     data: {
@@ -77,10 +92,12 @@ export async function createListing(
   redirect(`/listing/${listing.id}`);
 }
 
-// "Migrate an existing posting": the dealer's URL and any of their contact
-// details (phone, email, dealer name) are intentionally never read from the
-// form into the database - only vehicle data is stored, with the price
-// marked up by FINDERS_FEE_PERCENT.
+// "Migrate an existing posting": the price is marked up by
+// FINDERS_FEE_PERCENT, and the original source URL / any contact info found
+// for the original seller are stored in originalSourceUrl /
+// originalSellerContact - private fields that are never rendered on the
+// public listing page (see app/listing/[id]/page.tsx and lib/listings.ts),
+// only surfaced on /admin so the site owner can broker the sale.
 export async function createMigratedListing(
   _prevState: SellFormState,
   formData: FormData
@@ -98,13 +115,19 @@ export async function createMigratedListing(
     fields.price * (1 + FINDERS_FEE_PERCENT / 100)
   );
 
-  const photoUrls = await filesToPhotoUrls(formData);
+  const photoUrls = await collectPhotoUrls(formData);
+  const originalSourceUrl =
+    String(formData.get("sourceUrl") || "").trim() || null;
+  const originalSellerContact =
+    String(formData.get("sellerContactPrivate") || "").trim() || null;
 
   const listing = await prisma.listing.create({
     data: {
       ...fields,
       price: adjustedPrice,
       isMigrated: true,
+      originalSourceUrl,
+      originalSellerContact,
       photos: { create: photoUrls.map((url, order) => ({ url, order })) },
     },
   });

@@ -1,15 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import type { Listing, Photo } from "@prisma/client";
+import type { PublicListing } from "@/lib/listings";
 import ListingCard from "@/components/ListingCard";
 
 const STORAGE_KEY = "vptv:favorites";
 
 export default function FavoritesPage() {
-  const [listings, setListings] = useState<(Listing & { photos: Photo[] })[]>(
-    []
-  );
+  const [listings, setListings] = useState<PublicListing[]>([]);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {

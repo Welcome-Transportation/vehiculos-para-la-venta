@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { Listing, Photo } from "@prisma/client";
+import type { PublicListing } from "@/lib/listings";
 
 const currency = new Intl.NumberFormat("en-US", {
   style: "currency",
@@ -8,11 +8,7 @@ const currency = new Intl.NumberFormat("en-US", {
   maximumFractionDigits: 0,
 });
 
-export default function ListingCard({
-  listing,
-}: {
-  listing: Listing & { photos: Photo[] };
-}) {
+export default function ListingCard({ listing }: { listing: PublicListing }) {
   const cover = listing.photos[0]?.url ?? "/listings/bus-fleet.jpg";
 
   return (

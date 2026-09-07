@@ -1,4 +1,4 @@
-import type { Listing } from "@prisma/client";
+import type { PublicListing } from "@/lib/listings";
 
 function Feature({ label, on }: { label: string; on: boolean }) {
   return (
@@ -26,7 +26,7 @@ function Feature({ label, on }: { label: string; on: boolean }) {
   );
 }
 
-export default function FeatureList({ listing }: { listing: Listing }) {
+export default function FeatureList({ listing }: { listing: PublicListing }) {
   const features: [string, boolean][] = [
     ["ADA accessible", listing.isAdaAccessible],
     ["Seat belts", listing.hasSeatBelts],

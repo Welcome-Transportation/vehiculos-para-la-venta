@@ -38,6 +38,13 @@ model Listing {
   sellerPhone        String?
   sellerCompany      String?
 
+  // Private admin-only fields for migrated listings: the original dealer's
+  // posting URL and any contact info we could gather for it. Never rendered
+  // on the public listing page - only surfaced on /admin so the site owner
+  // can follow up and broker the sale.
+  originalSourceUrl     String?
+  originalSellerContact String?
+
   photos   Photo[]
   messages ContactMessage[]
 }
