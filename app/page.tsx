@@ -27,7 +27,7 @@ export default async function Home({
         Buses & Charter Buses For Sale
       </h1>
       <p className="mb-6 text-zinc-600 dark:text-zinc-400">
-        Browse commercial transport vehicles for sale across Utah.
+        Browse commercial transport vehicles for sale in Orlando, Florida.
       </p>
 
       <ListingFilters cities={cities} />

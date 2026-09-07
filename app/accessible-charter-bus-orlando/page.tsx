@@ -3,18 +3,18 @@ import { getListings } from "@/lib/listings";
 import ListingCard from "@/components/ListingCard";
 
 export const metadata: Metadata = {
-  title: "Accessible Charter Buses in Utah | Vehículos Para La Venta",
+  title: "Accessible Charter Buses in Orlando, FL | Vehículos Para La Venta",
   description:
-    "ADA-accessible charter buses and shuttle buses for sale in Utah, with wheelchair lifts and accessible seating for paratransit and senior transportation fleets.",
+    "ADA-accessible charter buses and shuttle buses for sale in Orlando, Florida, with wheelchair lifts and accessible seating for paratransit and senior transportation fleets.",
 };
 
-export default async function AccessibleCharterBusUtahPage() {
+export default async function AccessibleCharterBusOrlandoPage() {
   const listings = await getListings({ adaOnly: true });
 
   return (
     <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-10 sm:px-6">
       <h1 className="mb-4 text-3xl font-bold tracking-tight text-black dark:text-zinc-50">
-        Accessible Charter Buses in Utah
+        Accessible Charter Buses in Orlando, Florida
       </h1>
       <p className="mb-8 max-w-2xl text-zinc-600 dark:text-zinc-400">
         Every listing on this page includes a wheelchair lift or ramp and

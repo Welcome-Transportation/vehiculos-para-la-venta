@@ -6,7 +6,7 @@ import ListingCard from "@/components/ListingCard";
 export const metadata: Metadata = {
   title: "I Need a Bus | Vehículos Para La Venta",
   description:
-    "Need a bus fast? See what's currently available across Utah - from active-fleet coaches ready to drive off the lot to parked units priced to move.",
+    "Need a bus fast? See what's currently available in Orlando, Florida - from active-fleet coaches ready to drive off the lot to parked units priced to move.",
 };
 
 export default async function INeedABusPage() {
@@ -28,10 +28,10 @@ export default async function INeedABusPage() {
       <p className="mb-8 max-w-2xl text-zinc-600 dark:text-zinc-400">
         Looking for something wheelchair-accessible instead? See our{" "}
         <Link
-          href="/accessible-charter-bus-utah"
+          href="/accessible-charter-bus-orlando"
           className="font-medium text-red-600"
         >
-          accessible charter buses in Utah
+          accessible charter buses in Orlando
         </Link>
         .
       </p>

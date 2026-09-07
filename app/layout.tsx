@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     template: "%s | Vehículos Para La Venta",
   },
   description:
-    "Marketplace de buses y charter buses en venta en Utah. Encuentra vehículos de transporte comercial accesibles, con baño, Wi-Fi y más.",
+    "Marketplace de buses y charter buses en venta en Orlando, Florida. Encuentra vehículos de transporte comercial accesibles, con baño, Wi-Fi y más.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

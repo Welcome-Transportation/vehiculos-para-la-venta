@@ -6,7 +6,7 @@ import ListingCard from "@/components/ListingCard";
 export const metadata: Metadata = {
   title: "I Want to Buy a Bus | Vehículos Para La Venta",
   description:
-    "Buying a bus in Utah? Browse charter buses, shuttle buses, and motorcoaches for sale, or list your own vehicle in minutes.",
+    "Buying a bus in Orlando, Florida? Browse charter buses, shuttle buses, and motorcoaches for sale, or list your own vehicle in minutes.",
 };
 
 export default async function BuyABusPage() {
@@ -20,7 +20,7 @@ export default async function BuyABusPage() {
       <p className="mb-6 max-w-2xl text-zinc-600 dark:text-zinc-400">
         Whether you&apos;re starting a shuttle company, expanding a tour
         fleet, or replacing an aging coach, Vehículos Para La Venta lists
-        commercial buses for sale directly from Utah operators. Every
+        commercial buses for sale directly from Orlando-area operators. Every
         listing shows real mileage, working condition, ADA accessibility,
         and onboard amenities up front - no guesswork, no dealer
         markup games.

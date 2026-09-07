@@ -17,6 +17,7 @@ model Listing {
   description        String
   city               String
   county             String
+  state              String   @default("FL")
   zipCode            String
   latitude           Float
   longitude          Float
@@ -33,6 +34,9 @@ model Listing {
   fleetStatus        String   @default("PARKED")
   isMigrated         Boolean  @default(false)
   createdAt          DateTime @default(now())
+  sellerName         String?
+  sellerPhone        String?
+  sellerCompany      String?
 
   photos   Photo[]
   messages ContactMessage[]

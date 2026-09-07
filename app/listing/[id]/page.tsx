@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const listing = await getListingById(id);
   if (!listing) return {};
 
-  const title = `${listing.title} in ${listing.city}, Utah`;
+  const title = `${listing.title} in ${listing.city}, ${listing.state}`;
   const description = `${currency.format(listing.price)} - ${listing.description.slice(0, 140)}`;
 
   return {
@@ -62,7 +62,7 @@ export default async function ListingPage({ params }: Props) {
     address: {
       "@type": "PostalAddress",
       addressLocality: listing.city,
-      addressRegion: "UT",
+      addressRegion: listing.state,
       postalCode: listing.zipCode,
       addressCountry: "US",
     },
@@ -92,8 +92,8 @@ export default async function ListingPage({ params }: Props) {
             {currency.format(listing.price)}
           </p>
           <p className="text-zinc-600 dark:text-zinc-400">
-            {listing.city}, Utah &middot; {listing.county} &middot;{" "}
-            {listing.zipCode}
+            {listing.city}, {listing.state} &middot; {listing.county}{" "}
+            &middot; {listing.zipCode}
           </p>
           {listing.mileage && (
             <p className="text-sm text-zinc-500">
@@ -127,6 +127,24 @@ export default async function ListingPage({ params }: Props) {
           <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-zinc-500">
             Contact seller
           </h2>
+          {(listing.sellerName || listing.sellerCompany || listing.sellerPhone) && (
+            <p className="mb-4 rounded-lg bg-zinc-100 p-3 text-sm text-zinc-700 dark:bg-zinc-900 dark:text-zinc-300">
+              {listing.sellerName && <>{listing.sellerName}</>}
+              {listing.sellerCompany && <> &middot; {listing.sellerCompany}</>}
+              {listing.sellerPhone && (
+                <>
+                  {" "}
+                  &middot;{" "}
+                  <a
+                    href={`tel:${listing.sellerPhone.replace(/[^\d+]/g, "")}`}
+                    className="font-medium text-red-600"
+                  >
+                    {listing.sellerPhone}
+                  </a>
+                </>
+              )}
+            </p>
+          )}
           <ContactForm listingId={listing.id} />
         </div>
       </div>

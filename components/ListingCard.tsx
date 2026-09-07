@@ -40,7 +40,7 @@ export default function ListingCard({
           {currency.format(listing.price)}
         </p>
         <p className="text-sm text-zinc-600 dark:text-zinc-400">
-          {listing.city}, UT &middot; {listing.county}
+          {listing.city}, {listing.state} &middot; {listing.county}
         </p>
         <p className="text-xs text-zinc-500 dark:text-zinc-500">
           {listing.mileage

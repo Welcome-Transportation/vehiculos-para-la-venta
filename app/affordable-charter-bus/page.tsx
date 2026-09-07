@@ -5,7 +5,7 @@ import ListingCard from "@/components/ListingCard";
 export const metadata: Metadata = {
   title: "Affordable Charter Buses for Sale | Vehículos Para La Venta",
   description:
-    "Shopping on a budget? Browse the most affordable charter buses and shuttle buses for sale in Utah, sorted by price.",
+    "Shopping on a budget? Browse the most affordable charter buses and shuttle buses for sale in Orlando, Florida, sorted by price.",
 };
 
 const BUDGET_THRESHOLD = 70000;
