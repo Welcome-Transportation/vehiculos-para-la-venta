@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://vehiculos-para-la-venta.netlify.app"),
+  metadataBase: new URL("https://busbuy.netlify.app"),
   title: {
     default: "BusBuy | Buses y Charter Buses en Venta",
     template: "%s | BusBuy",

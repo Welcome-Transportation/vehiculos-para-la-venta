@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const BASE_URL = "https://vehiculos-para-la-venta.netlify.app";
+const BASE_URL = "https://busbuy.netlify.app";
 
 export default function robots(): MetadataRoute.Robots {
   return {

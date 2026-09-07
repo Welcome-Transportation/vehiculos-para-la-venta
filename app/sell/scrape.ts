@@ -153,7 +153,7 @@ export async function fetchListingFromUrl(
     const res = await fetch(parsed.toString(), {
       headers: {
         "User-Agent":
-          "Mozilla/5.0 (compatible; VehiculosParaLaVentaBot/1.0; +https://vehiculos-para-la-venta.netlify.app)",
+          "Mozilla/5.0 (compatible; BusBuyBot/1.0; +https://busbuy.netlify.app)",
       },
       signal: AbortSignal.timeout(10000),
     });

@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { prisma } from "@/lib/prisma";
 
-const BASE_URL = "https://vehiculos-para-la-venta.netlify.app";
+const BASE_URL = "https://busbuy.netlify.app";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const listings = await prisma.listing.findMany({
