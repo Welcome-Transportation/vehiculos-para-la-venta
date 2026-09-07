@@ -33,9 +33,14 @@ const listings = [
 ];
 
 async function main() {
-  await prisma.contactMessage.deleteMany();
-  await prisma.photo.deleteMany();
-  await prisma.listing.deleteMany();
+  // Safe to run on every deploy: only bootstraps the very first listing on
+  // an empty database. Never wipes real listings added later through
+  // /sell, so it can stay in the build command without risk.
+  const existing = await prisma.listing.count();
+  if (existing > 0) {
+    console.log(`Database already has ${existing} listing(s), skipping seed.`);
+    return;
+  }
 
   for (const { photos, ...data } of listings) {
     await prisma.listing.create({

@@ -1,8 +1,5 @@
 [build]
-  command = "npx prisma generate && npm run build"
-
-[build.environment]
-  DATABASE_URL = "file:./dev.db"
+  command = "npx prisma generate && npx prisma db push --accept-data-loss --skip-generate && node prisma/seed.js && npm run build"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"

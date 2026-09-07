@@ -7,13 +7,12 @@ const nextConfig: NextConfig = {
   // errors. Production builds don't double-invoke, so this only affects
   // local dev noise, not behavior.
   reactStrictMode: false,
-  // The SQLite file and Prisma's query-engine binary are opened at runtime
-  // by file path, not via require()/import, so Next's file tracer can't
-  // discover them on its own - they have to be listed explicitly or the
-  // deployed function won't have the database or engine bundled with it.
+  // Prisma's query-engine binary is opened at runtime by file path, not via
+  // require()/import, so Next's file tracer can't discover it on its own -
+  // it has to be listed explicitly or the deployed function won't have the
+  // engine bundled with it.
   outputFileTracingIncludes: {
     "/**/*": [
-      "./prisma/dev.db",
       "./node_modules/.prisma/client/**",
       "./node_modules/@prisma/client/**",
     ],
