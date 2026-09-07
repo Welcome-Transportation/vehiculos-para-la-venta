@@ -3,10 +3,10 @@ const prisma = new PrismaClient();
 
 const listings = [
   {
-    title: "2001 Van Hool C4510 Motorcoach - 56 Passenger",
+    title: "2001 Van Hool C2045 Motorcoach - 56 Passenger",
     price: 25000,
     description:
-      "2001 Van Hool C4510 motorcoach, seats 56. Equipped with TVs and a DVD player, onboard PA system with microphone, working bathroom, and a radio with Bluetooth connectivity for media playback. Currently in active service - runs and drives.",
+      "2001 Van Hool C2045 motorcoach, seats 56. Equipped with TVs and a DVD player, onboard PA system with microphone, working bathroom, and a radio with Bluetooth connectivity for media playback. Currently in active service - runs and drives.",
     city: "Orlando",
     county: "Orange County",
     state: "FL",
@@ -28,7 +28,7 @@ const listings = [
     sellerName: "Gloria",
     sellerPhone: "(407) 489-3383",
     sellerCompany: "Welcome Transportation",
-    photos: ["/listings/vanhool-c4510-orlando.jpg"],
+    photos: ["/listings/vanhool-c2045-orlando.jpg"],
   },
 ];
 
